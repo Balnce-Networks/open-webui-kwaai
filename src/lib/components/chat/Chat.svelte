@@ -638,6 +638,23 @@
 	// Web functions
 	//////////////////////////
 
+	const fetchAvatarVideo = async () => {
+		const subdomain = window.location.hostname.split('.')[0];
+		switch (subdomain) {
+			case 'joe':
+				return '/assets/avatarVideos/joe.mp4';
+			case 'edu':
+				return '/assets/avatarVideos/edu.mp4';
+			case 'bruce':
+				return '/assets/avatarVideos/bruce.mp4';
+			case 'faq':
+				return '/assets/avatarVideos/faq.mp4';
+			default:
+				return '/assets/avatarVideos/faq.mp4';
+		}
+	}
+
+
 	const initNewChat = async () => {
 		if ($page.url.searchParams.get('models')) {
 			selectedModels = $page.url.searchParams.get('models')?.split(',');
@@ -1945,7 +1962,7 @@
 				{/if}
 
 				<div class="flex flex-col flex-auto z-10 w-full @container text-white">
-					<video src="https://faq.kwaai.ai/video/Avatar.mp4" loop muted autoplay class="object-cover absolute top-0 left-0 w-full h-full" />
+					<video src={`${fetchAvatarVideo()}`} loop muted autoplay class="object-cover absolute top-0 left-0 w-full h-full" />
 					{#if $settings?.landingPageMode === 'chat' || createMessagesList(history, history.currentId).length > 0}
 						<div
 							class=" pb-2.5 flex flex-col justify-between w-full flex-auto overflow-auto h-0 max-w-full z-10 scrollbar-hidden"
