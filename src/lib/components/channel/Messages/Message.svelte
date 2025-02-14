@@ -249,7 +249,7 @@
 						</div>
 					</div>
 				{:else}
-					<div class=" min-w-full markdown-prose">
+					<div class=" min-w-full markdown-body">
 						<Markdown
 							id={message.id}
 							content={message.content}

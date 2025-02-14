@@ -226,7 +226,7 @@
 						</div>
 
 						<div
-							class=" flex {($settings?.chatBubble ?? true)
+							class=" flex mt-1 {($settings?.chatBubble ?? true)
 								? 'justify-end'
 								: ''}  text-gray-600 dark:text-gray-500"
 						>
@@ -288,7 +288,7 @@
 							{#if !readOnly}
 								<Tooltip content={$i18n.t('Edit')} placement="bottom">
 									<button
-										class="invisible group-hover:visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition edit-user-message-button"
+										class="invisible group-hover:visible p-1.5 text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition edit-user-message-button"
 										on:click={() => {
 											editMessageHandler();
 										}}
@@ -313,7 +313,7 @@
 
 							<Tooltip content={$i18n.t('Copy')} placement="bottom">
 								<button
-									class="invisible group-hover:visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+									class="invisible group-hover:visible p-1.5 text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 									on:click={() => {
 										copyToClipboard(message.content);
 									}}
