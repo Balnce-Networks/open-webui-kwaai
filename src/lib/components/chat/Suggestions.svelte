@@ -59,7 +59,7 @@
 	}
 </script>
 
-<div class="mb-1 flex gap-1 text-xs font-medium items-center text-gray-400 dark:text-gray-600">
+<div class="mb-1 flex gap-1 text-xs font-medium items-center text-gray-100 dark:text-gray-100">
 	{#if filteredPrompts.length > 0}
 		<Bolt />
 		{$i18n.t('Suggested')}
@@ -91,7 +91,7 @@
 						>
 							{prompt.title[0]}
 						</div>
-						<div class="text-xs text-gray-500 font-normal line-clamp-1">
+						<div class="text-xs text-gray-100 font-normal line-clamp-1">
 							{prompt.title[1]}
 						</div>
 					{:else}
@@ -100,7 +100,7 @@
 						>
 							{prompt.content}
 						</div>
-						<div class="text-xs text-gray-500 font-normal line-clamp-1">{$i18n.t('Prompt')}</div>
+						<div class="text-xs text-gray-200 font-normal line-clamp-1">{$i18n.t('Prompt')}</div>
 					{/if}
 				</div>
 			</button>

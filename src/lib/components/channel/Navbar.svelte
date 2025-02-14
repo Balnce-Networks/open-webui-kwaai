@@ -23,7 +23,7 @@
 
 	<div class=" flex max-w-full w-full mx-auto px-1 pt-0.5 bg-transparent">
 		<div class="flex items-center w-full max-w-full">
-			<div
+			<!-- <div
 				class="{$showSidebar
 					? 'md:hidden'
 					: ''} mr-1 self-start flex flex-none items-center text-gray-600 dark:text-gray-400"
@@ -40,9 +40,9 @@
 						<MenuLines />
 					</div>
 				</button>
-			</div>
+			</div> -->
 
-			<div
+			<!-- <div
 				class="flex-1 overflow-hidden max-w-full py-0.5
 			{$showSidebar ? 'ml-1' : ''}
 			"
@@ -52,9 +52,9 @@
 						{channel.name}
 					</div>
 				{/if}
-			</div>
+			</div> -->
 
-			<div class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
+			<!-- <div class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
 				{#if $user !== undefined}
 					<UserMenu
 						className="max-w-[200px]"
@@ -80,7 +80,7 @@
 						</button>
 					</UserMenu>
 				{/if}
-			</div>
+			</div> -->
 		</div>
 	</div>
 </nav>

@@ -108,7 +108,7 @@
 			<div class="flex flex-row justify-center gap-3 @sm:gap-3.5 w-fit px-5">
 				<div class="flex flex-shrink-0 justify-center">
 					<div class="flex -space-x-4 mb-0.5" in:fade={{ duration: 100 }}>
-						{#each models as model, modelIdx}
+						<!-- {#each models as model, modelIdx}
 							<Tooltip
 								content={(models[modelIdx]?.info?.meta?.tags ?? [])
 									.map((tag) => tag.name.toUpperCase())
@@ -132,15 +132,15 @@
 									/>
 								</button>
 							</Tooltip>
-						{/each}
+						{/each} -->
 					</div>
 				</div>
 
-				<div class=" text-3xl @sm:text-4xl line-clamp-1" in:fade={{ duration: 100 }}>
+				<div class=" text-3xl @sm:text-4xl line-clamp-1 text-white" in:fade={{ duration: 100 }}>
 					{#if models[selectedModelIdx]?.name}
 						{models[selectedModelIdx]?.name}
 					{:else}
-						{$i18n.t('Hello, {{name}}', { name: $user.name })}
+						{$i18n.t('Hello!', { name: $user.name })}
 					{/if}
 				</div>
 			</div>

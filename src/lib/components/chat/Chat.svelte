@@ -1881,13 +1881,11 @@
 />
 
 <div
-	class="h-screen max-h-[100dvh] transition-width duration-200 ease-in-out {$showSidebar
-		? '  md:max-w-[calc(100%-260px)]'
-		: ' '} w-full max-w-full flex flex-col"
+	class="h-screen max-h-[100dvh] transition-width duration-200 ease-in-out w-full max-w-full flex flex-col"
 	id="chat-container"
 >
 	{#if chatIdProp === '' || (!loading && chatIdProp)}
-		{#if $settings?.backgroundImageUrl ?? null}
+		<!-- {#if $settings?.backgroundImageUrl ?? null}
 			<div
 				class="absolute {$showSidebar
 					? 'md:max-w-[calc(100%-260px)] md:translate-x-[260px]'
@@ -1898,7 +1896,7 @@
 			<div
 				class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white to-white/85 dark:from-gray-900 dark:to-[#171717]/90 z-0"
 			/>
-		{/if}
+		{/if} -->
 
 		<Navbar
 			bind:this={navbarElement}
@@ -1946,7 +1944,8 @@
 					</div>
 				{/if}
 
-				<div class="flex flex-col flex-auto z-10 w-full @container">
+				<div class="flex flex-col flex-auto z-10 w-full @container text-white">
+					<video src="https://faq.kwaai.ai/video/Avatar.mp4" loop muted autoplay class="object-cover absolute top-0 left-0 w-full h-full" />
 					{#if $settings?.landingPageMode === 'chat' || createMessagesList(history, history.currentId).length > 0}
 						<div
 							class=" pb-2.5 flex flex-col justify-between w-full flex-auto overflow-auto h-0 max-w-full z-10 scrollbar-hidden"
