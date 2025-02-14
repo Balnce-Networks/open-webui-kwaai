@@ -123,7 +123,7 @@
 			</div>
 		{/if}
 
-		<div class="chat-{message.role} w-full min-w-full markdown-prose">
+		<div class="chat-{message.role} w-full min-w-full markdown-body">
 			{#if message.files}
 				<div class="mt-2.5 mb-1 w-full flex flex-col justify-end overflow-x-auto gap-1 flex-wrap">
 					{#each message.files as file}
@@ -211,13 +211,9 @@
 					</div>
 				{:else}
 					<div class="w-full">
-						<div class="flex {($settings?.chatBubble ?? true) ? 'justify-end pb-1' : 'w-full'}">
+						<div class="flex tet-white {($settings?.chatBubble ?? true) ? 'justify-end pb-1' : 'w-full'}">
 							<div
-								class="rounded-3xl {($settings?.chatBubble ?? true)
-									? `max-w-[90%] px-5 py-2  bg-gray-50 dark:bg-gray-850 ${
-											message.files ? 'rounded-tr-lg' : ''
-										}`
-									: ' w-full'}"
+								
 							>
 								{#if message.content}
 									<Markdown id={message.id} content={message.content} />
