@@ -638,7 +638,7 @@
 	// Web functions
 	//////////////////////////
 
-	const fetchAvatarVideo = async () => {
+	async function fetchAvatarVideo() {
 		const subdomain = window.location.hostname.split('.')[0];
 		switch (subdomain) {
 			case 'joe':
@@ -654,6 +654,12 @@
 		}
 	}
 
+	// Fetch the video source and update the video element
+	(async () => {
+		const videoElement = document.getElementById('avatarVideo');
+		const videoSrc = await fetchAvatarVideo();
+		videoElement.src = videoSrc;
+	})();
 
 	const initNewChat = async () => {
 		if ($page.url.searchParams.get('models')) {
@@ -1962,7 +1968,13 @@
 				{/if}
 
 				<div class="flex flex-col flex-auto z-10 w-full @container text-white">
-					<video src={`${fetchAvatarVideo()}`} loop muted autoplay class="object-cover absolute top-0 left-0 w-full h-full" />
+					<video
+						src={`${fetchAvatarVideo()}`}
+						loop
+						muted
+						autoplay
+						class="object-cover absolute top-0 left-0 w-full h-full"
+					/>
 					{#if $settings?.landingPageMode === 'chat' || createMessagesList(history, history.currentId).length > 0}
 						<div
 							class=" pb-2.5 flex flex-col justify-between w-full flex-auto overflow-auto h-0 max-w-full z-10 scrollbar-hidden"
