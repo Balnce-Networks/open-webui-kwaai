@@ -1953,7 +1953,7 @@
 						muted
 						autoplay
 						class="object-cover absolute top-0 left-0 w-full h-full"
-						on:canplay={() => {
+						on:mounted={() => {
 							document.getElementById('avatarVideo').src =
 								{
 									joe: '/assets/avatarVideos/joe.mp4',
