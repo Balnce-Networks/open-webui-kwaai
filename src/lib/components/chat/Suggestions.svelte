@@ -84,7 +84,7 @@
 				style="animation-delay: {idx * 60}ms"
 				on:click={() => dispatch('select', prompt.content)}
 			>
-				<div class="flex flex-col text-left" style="text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);">
+				<div class="flex flex-col text-left" style="text-shadow: rgba(0, 0, 0, 1) 0px 1px 3px;">
 					{#if prompt.title && prompt.title[0] !== ''}
 						<div
 							class="font-medium dark:text-gray-300 dark:group-hover:text-gray-200 transition line-clamp-1"
