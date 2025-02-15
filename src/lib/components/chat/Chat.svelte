@@ -135,6 +135,17 @@
 	let files = [];
 	let params = {};
 
+
+
+	const loadVideoBg = async () => {
+		// Fetch the video source and update the video element
+		const videoElement = document.getElementById('avatarVideo');
+		const videoSrc = await fetchAvatarVideo();
+		videoElement.src = videoSrc;
+	};
+
+	loadVideoBg();
+
 	$: if (chatIdProp) {
 		(async () => {
 			loading = true;
@@ -386,10 +397,9 @@
 		}
 	};
 
-	let videoSrc = '';
-
 	onMount(async () => {
 		console.log('mounted');
+		await loadVideoBg();
 		window.addEventListener('message', onMessageHandler);
 		$socket?.on('chat-events', chatEventHandler);
 
@@ -640,6 +650,22 @@
 	// Web functions
 	//////////////////////////
 
+	async function fetchAvatarVideo() {
+		const subdomain = window.location.hostname.split('.')[0];
+		switch (subdomain) {
+			case 'joe':
+				return '/assets/avatarVideos/joe.mp4';
+			case 'edu':
+				return '/assets/avatarVideos/edu.mp4';
+			case 'bruce':
+				return '/assets/avatarVideos/bruce.mp4';
+			case 'faq':
+				return '/assets/avatarVideos/faq.mp4';
+			default:
+				return '/assets/avatarVideos/faq.mp4';
+		}
+	}
+
 	const initNewChat = async () => {
 		if ($page.url.searchParams.get('models')) {
 			selectedModels = $page.url.searchParams.get('models')?.split(',');
@@ -770,6 +796,7 @@
 	};
 
 	const loadChat = async () => {
+		loadVideoBg();
 		chatId.set(chatIdProp);
 		chat = await getChatById(localStorage.token, $chatId).catch(async (error) => {
 			await goto('/');
@@ -1953,15 +1980,6 @@
 						muted
 						autoplay
 						class="object-cover absolute top-0 left-0 w-full h-full"
-						on:mounted={() => {
-							document.getElementById('avatarVideo').src =
-								{
-									joe: '/assets/avatarVideos/joe.mp4',
-									edu: '/assets/avatarVideos/edu.mp4',
-									bruce: '/assets/avatarVideos/bruce.mp4',
-									faq: '/assets/avatarVideos/faq.mp4'
-								}[window.location.hostname.split('.')[0]] || '/assets/avatarVideos/faq.mp4';
-						}}
 					></video>
 					{#if $settings?.landingPageMode === 'chat' || createMessagesList(history, history.currentId).length > 0}
 						<div
