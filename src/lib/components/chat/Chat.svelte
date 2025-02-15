@@ -391,6 +391,11 @@
 		window.addEventListener('message', onMessageHandler);
 		$socket?.on('chat-events', chatEventHandler);
 
+		// Fetch the video source and update the video element
+		const videoElement = document.getElementById('avatarVideo');
+		const videoSrc = await fetchAvatarVideo();
+		videoElement.src = videoSrc;
+
 		if (!$chatId) {
 			chatIdUnsubscriber = chatId.subscribe(async (value) => {
 				if (!value) {
@@ -653,13 +658,6 @@
 				return '/assets/avatarVideos/faq.mp4';
 		}
 	}
-
-	// Fetch the video source and update the video element
-	(async () => {
-		const videoElement = document.getElementById('avatarVideo');
-		const videoSrc = await fetchAvatarVideo();
-		videoElement.src = videoSrc;
-	})();
 
 	const initNewChat = async () => {
 		if ($page.url.searchParams.get('models')) {
