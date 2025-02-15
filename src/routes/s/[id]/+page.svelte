@@ -113,7 +113,7 @@
 		if (!chat) return;
 
 		const res = await cloneSharedChatById(localStorage.token, chat.id).catch((error) => {
-			toast.error(`${error}`);
+			// toast.error(`${error}`);
 			return null;
 		});
 

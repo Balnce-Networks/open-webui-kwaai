@@ -234,17 +234,17 @@
 						}
 					}
 
-					toast.custom(NotificationToast, {
-						componentProps: {
-							onClick: () => {
-								goto(`/c/${event.chat_id}`);
-							},
-							content: content,
-							title: title
-						},
-						duration: 15000,
-						unstyled: true
-					});
+					// toast.custom(NotificationToast, {
+					// 	componentProps: {
+					// 		onClick: () => {
+					// 			goto(`/c/${event.chat_id}`);
+					// 		},
+					// 		content: content,
+					// 		title: title
+					// 	},
+					// 	duration: 15000,
+					// 	unstyled: true
+					// });
 				}
 			} else if (type === 'chat:title') {
 				currentChatPage.set(1);
@@ -380,17 +380,17 @@
 					}
 				}
 
-				toast.custom(NotificationToast, {
-					componentProps: {
-						onClick: () => {
-							goto(`/channels/${event.channel_id}`);
-						},
-						content: data?.content,
-						title: event?.channel?.name
-					},
-					duration: 15000,
-					unstyled: true
-				});
+				// toast.custom(NotificationToast, {
+				// 	componentProps: {
+				// 		onClick: () => {
+				// 			goto(`/channels/${event.channel_id}`);
+				// 		},
+				// 		content: data?.content,
+				// 		title: event?.channel?.name
+				// 	},
+				// 	duration: 15000,
+				// 	unstyled: true
+				// });
 			}
 		}
 	};
@@ -482,7 +482,7 @@
 				if (localStorage.token) {
 					// Get Session User Info
 					const sessionUser = await getSessionUser(localStorage.token).catch((error) => {
-						toast.error(`${error}`);
+						// toast.error(`${error}`);
 						return null;
 					});
 
