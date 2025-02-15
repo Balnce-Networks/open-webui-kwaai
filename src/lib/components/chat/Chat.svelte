@@ -1975,7 +1975,7 @@
 					</div>
 				{/if}
 
-				<div class="flex flex-col flex-auto z-10 w-full @container text-white drop-shadow-md bg-blue-950">
+				<div class="flex flex-col flex-auto z-10 w-full @container text-white bg-blue-950" style="text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);">
 					<video
 						id="avatarVideo"
 						loop
@@ -1983,7 +1983,7 @@
 						autoplay
 						class="object-cover absolute top-0 left-0 w-full h-full"
 					></video>
-					<div class="absolute inset-0 bg-black bg-opacity-20 z-10"></div>
+					<div class="absolute inset-0 bg-black bg-opacity-10"></div>
 					{#if $settings?.landingPageMode === 'chat' || createMessagesList(history, history.currentId).length > 0}
 						<div
 							class=" pb-2.5 flex flex-col justify-between w-full flex-auto overflow-auto h-0 max-w-full z-10 scrollbar-hidden"
