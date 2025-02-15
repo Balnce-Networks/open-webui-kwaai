@@ -139,9 +139,11 @@
 
 	const loadVideoBg = async () => {
 		// Fetch the video source and update the video element
-		const videoElement = document.getElementById('avatarVideo');
-		const videoSrc = await fetchAvatarVideo();
-		videoElement.src = videoSrc;
+		console.log(document.getElementById('avatarVideo'));
+		await fetchAvatarVideo().then((res) => {
+			console.log(res);
+			document?.getElementsByClassName('avatarVideo')[0].src = res;
+		});
 	};
 
 	loadVideoBg();
@@ -1975,11 +1977,10 @@
 
 				<div class="flex flex-col flex-auto z-10 w-full @container text-white bg-blue-950">
 					<video
-						id="avatarVideo"
 						loop
 						muted
 						autoplay
-						class="object-cover absolute top-0 left-0 w-full h-full"
+						class="avatarVideo object-cover absolute top-0 left-0 w-full h-full"
 					></video>
 					{#if $settings?.landingPageMode === 'chat' || createMessagesList(history, history.currentId).length > 0}
 						<div
