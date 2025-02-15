@@ -390,21 +390,6 @@
 
 	onMount(async () => {
 		console.log('mounted');
-
-		const subdomain = window.location.hostname.split('.')[0];
-		const videoSrc =
-			{
-				joe: '/assets/avatarVideos/joe.mp4',
-				edu: '/assets/avatarVideos/edu.mp4',
-				bruce: '/assets/avatarVideos/bruce.mp4',
-				faq: '/assets/avatarVideos/faq.mp4'
-			}[subdomain] || '/assets/avatarVideos/faq.mp4';
-
-		const videoElement = document.getElementById('avatarVideo');
-		if (videoElement) {
-			videoElement.src = videoSrc;
-		}
-
 		window.addEventListener('message', onMessageHandler);
 		$socket?.on('chat-events', chatEventHandler);
 
@@ -1968,6 +1953,15 @@
 						muted
 						autoplay
 						class="object-cover absolute top-0 left-0 w-full h-full"
+						on:canplay={() => {
+							document.getElementById('avatarVideo').src =
+								{
+									joe: '/assets/avatarVideos/joe.mp4',
+									edu: '/assets/avatarVideos/edu.mp4',
+									bruce: '/assets/avatarVideos/bruce.mp4',
+									faq: '/assets/avatarVideos/faq.mp4'
+								}[window.location.hostname.split('.')[0]] || '/assets/avatarVideos/faq.mp4';
+						}}
 					></video>
 					{#if $settings?.landingPageMode === 'chat' || createMessagesList(history, history.currentId).length > 0}
 						<div
