@@ -135,17 +135,6 @@
 	let files = [];
 	let params = {};
 
-
-
-	const loadVideoBg = async () => {
-		// Fetch the video source and update the video element
-		const videoElement = document.getElementById('avatarVideo');
-		const videoSrc = await fetchAvatarVideo();
-		videoElement.src = videoSrc;
-	};
-
-	loadVideoBg();
-
 	$: if (chatIdProp) {
 		(async () => {
 			loading = true;
@@ -397,9 +386,25 @@
 		}
 	};
 
+	let videoSrc = '';
+
 	onMount(async () => {
 		console.log('mounted');
-		await loadVideoBg();
+
+		const subdomain = window.location.hostname.split('.')[0];
+		const videoSrc =
+			{
+				joe: '/assets/avatarVideos/joe.mp4',
+				edu: '/assets/avatarVideos/edu.mp4',
+				bruce: '/assets/avatarVideos/bruce.mp4',
+				faq: '/assets/avatarVideos/faq.mp4'
+			}[subdomain] || '/assets/avatarVideos/faq.mp4';
+
+		const videoElement = document.getElementById('avatarVideo');
+		if (videoElement) {
+			videoElement.src = videoSrc;
+		}
+
 		window.addEventListener('message', onMessageHandler);
 		$socket?.on('chat-events', chatEventHandler);
 
@@ -649,22 +654,6 @@
 	//////////////////////////
 	// Web functions
 	//////////////////////////
-
-	async function fetchAvatarVideo() {
-		const subdomain = window.location.hostname.split('.')[0];
-		switch (subdomain) {
-			case 'joe':
-				return '/assets/avatarVideos/joe.mp4';
-			case 'edu':
-				return '/assets/avatarVideos/edu.mp4';
-			case 'bruce':
-				return '/assets/avatarVideos/bruce.mp4';
-			case 'faq':
-				return '/assets/avatarVideos/faq.mp4';
-			default:
-				return '/assets/avatarVideos/faq.mp4';
-		}
-	}
 
 	const initNewChat = async () => {
 		if ($page.url.searchParams.get('models')) {
