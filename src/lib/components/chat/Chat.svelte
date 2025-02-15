@@ -135,7 +135,16 @@
 	let files = [];
 	let params = {};
 
-	await loadVideoBg();
+
+
+	const loadVideoBg = async () => {
+		// Fetch the video source and update the video element
+		const videoElement = document.getElementById('avatarVideo');
+		const videoSrc = await fetchAvatarVideo();
+		videoElement.src = videoSrc;
+	};
+
+	loadVideoBg();
 
 	$: if (chatIdProp) {
 		(async () => {
@@ -386,13 +395,6 @@
 				submitPrompt(event.data.text);
 			}
 		}
-	};
-
-	const loadVideoBg = async () => {
-		// Fetch the video source and update the video element
-		const videoElement = document.getElementById('avatarVideo');
-		const videoSrc = await fetchAvatarVideo();
-		videoElement.src = videoSrc;
 	};
 
 	onMount(async () => {
