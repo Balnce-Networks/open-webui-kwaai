@@ -386,15 +386,18 @@
 		}
 	};
 
-	onMount(async () => {
-		console.log('mounted');
-		window.addEventListener('message', onMessageHandler);
-		$socket?.on('chat-events', chatEventHandler);
-
+	// on dom ready
+	document.addEventListener('DOMContentLoaded', async () => {
 		// Fetch the video source and update the video element
 		const videoElement = document.getElementById('avatarVideo');
 		const videoSrc = await fetchAvatarVideo();
 		videoElement.src = videoSrc;
+	});
+
+	onMount(async () => {
+		console.log('mounted');
+		window.addEventListener('message', onMessageHandler);
+		$socket?.on('chat-events', chatEventHandler);
 
 		if (!$chatId) {
 			chatIdUnsubscriber = chatId.subscribe(async (value) => {
