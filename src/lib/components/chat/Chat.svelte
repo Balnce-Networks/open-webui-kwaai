@@ -135,6 +135,8 @@
 	let files = [];
 	let params = {};
 
+	await loadVideoBg();
+
 	$: if (chatIdProp) {
 		(async () => {
 			loading = true;
@@ -386,16 +388,16 @@
 		}
 	};
 
-	// on dom ready
-	document.addEventListener('DOMContentLoaded', async () => {
+	const loadVideoBg = async () => {
 		// Fetch the video source and update the video element
 		const videoElement = document.getElementById('avatarVideo');
 		const videoSrc = await fetchAvatarVideo();
 		videoElement.src = videoSrc;
-	});
+	};
 
 	onMount(async () => {
 		console.log('mounted');
+		await loadVideoBg();
 		window.addEventListener('message', onMessageHandler);
 		$socket?.on('chat-events', chatEventHandler);
 
