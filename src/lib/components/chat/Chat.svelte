@@ -1972,7 +1972,7 @@
 					</div>
 				{/if}
 
-				<div class="flex flex-col flex-auto z-10 w-full @container text-white">
+				<div class="flex flex-col flex-auto z-10 w-full @container text-white bg-blue-950">
 					<video
 						id="avatarVideo"
 						loop
