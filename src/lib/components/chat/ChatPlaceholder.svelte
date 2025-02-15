@@ -115,7 +115,7 @@
 							</div>
 						{/if}
 					{:else}
-						<div class=" font-medium text-gray-400 dark:text-gray-500 line-clamp-1 font-p">
+						<div class=" font-medium text-gray-400 dark:text-gray-500 line-clamp-1 font-p" style="text-shadow: none;">
 							{$i18n.t('How can I help you today?')}
 						</div>
 					{/if}
