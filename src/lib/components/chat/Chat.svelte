@@ -139,8 +139,8 @@
 
 	const loadVideoBg = async () => {
 		// Fetch the video source and update the video element
-		const videoElement = document.getElementById('avatarVideo') as HTMLVideoElement;
-		const videoSrc = await fetchAvatarVideo();
+		let videoElement = document.getElementById('avatarVideo') as HTMLVideoElement;
+		let videoSrc = await fetchAvatarVideo();
 		console.log(videoSrc);
 		console.log(videoElement);
 		videoElement.src = videoSrc;
